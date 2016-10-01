@@ -1,5 +1,6 @@
 # Design Model Examples
 
-1. [Modulear Dependency Model](multi-dependency/README.md)
+1. [Modular Dependency Model](multi-dependency)
+1. [JAXB Bean extends Exception](xml-object-extending-exception)
 
 
