@@ -23,7 +23,7 @@
     xmlns="http://schemas.xmlsoap.org/wsdl/"
     xmlns:om="urn:io.fares.model.example.onem"
     xmlns:os="urn:io.fares.example.service.one"
-    xmlns:u="urn:io.fares.model.example.utility"
+    xmlns:f="urn:io.fares.model.example.utility"
     xmlns:xsd="http://www.w3.org/2001/XMLSchema"
     xmlns:http="http://schemas.xmlsoap.org/wsdl/http/"
     xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/"
@@ -55,14 +55,14 @@
   </wsdl:message>
 
   <wsdl:message name="GetCustomerException">
-    <wsdl:part name="err" element="u:Fault"/>
+    <wsdl:part name="gce" type="f:Fault"/>
   </wsdl:message>
 
   <wsdl:portType name="CustomerPort">
     <wsdl:operation name="getById">
       <wsdl:input name="in" message="os:getCustomerByIdRQ"/>
       <wsdl:output name="out" message="os:getCustomerByIdRS"/>
-      <wsdl:fault name="err" message="os:GetCustomerException"/>
+      <wsdl:fault name="gce" message="os:GetCustomerException"/>
     </wsdl:operation>
   </wsdl:portType>
 
@@ -77,8 +77,8 @@
       <wsdl:output name="out">
         <soap:body use="literal"/>
       </wsdl:output>
-      <wsdl:fault name="err">
-        <soap:fault name="err" use="literal"/>
+      <wsdl:fault name="gce">
+        <soap:fault name="fault" use="literal"/>
       </wsdl:fault>
     </wsdl:operation>
   </wsdl:binding>

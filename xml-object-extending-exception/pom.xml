@@ -25,22 +25,22 @@
     <artifactId>design-builder-examples</artifactId>
     <version>1.0.0</version>
   </parent>
-  <artifactId>design-builder-example-multi-dependency</artifactId>
-  <name>Examples :: Multi Dependency :: Module</name>
-  <packaging>pom</packaging>
+  <artifactId>design-builder-example-xml-object-extending-exception</artifactId>
+  <name>Examples :: XML Object Extending Exception</name>
+  <packaging>jar</packaging>
 
-  <modules>
-    <module>episode-transformer</module>
-    <module>parent</module>
-    <module>parent-model</module>
-    <module>parent-wsdl</module>
-    <module>common</module>
-    <module>utility</module>
-    <module>one</module>
-    <module>one-messages</module>
-    <module>service-a</module>
-    <module>service-b</module>
-    <module>service-c</module>
-  </modules>
+  <dependencies>
+    <dependency>
+      <groupId>org.eclipse.persistence</groupId>
+      <artifactId>org.eclipse.persistence.moxy</artifactId>
+      <version>2.6.4</version>
+    </dependency>
+    <dependency>
+      <groupId>junit</groupId>
+      <artifactId>junit</artifactId>
+      <version>4.11</version>
+      <scope>test</scope>
+    </dependency>
+  </dependencies>
 
 </project>

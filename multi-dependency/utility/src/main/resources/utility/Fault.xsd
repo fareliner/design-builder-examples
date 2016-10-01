@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xsd:schema targetNamespace="urn:io.fares.model.example.utility"
+            xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+            xmlns:tns="urn:io.fares.model.example.utility"
+            elementFormDefault="qualified"
+            attributeFormDefault="unqualified">
+
+  <xsd:element name="Fault" type="tns:Fault"/>
+
+  <xsd:complexType name="Fault">
+    <xsd:sequence>
+      <xsd:element name="Code">
+        <xsd:simpleType>
+          <xsd:annotation>
+            <xsd:documentation>Fault code, example REV-0302</xsd:documentation>
+          </xsd:annotation>
+          <xsd:restriction base="xsd:string">
+            <xsd:pattern value="[A-Z]{3}\-[0-9]{4}"/>
+          </xsd:restriction>
+        </xsd:simpleType>
+      </xsd:element>
+      <xsd:element ref="tns:Severity" minOccurs="0"/>
+      <xsd:element name="Description" type="xsd:string"/>
+      <xsd:element name="FaultInstanceID" type="xsd:string" minOccurs="0"/>
+      <xsd:element name="DateTimeStamp" type="xsd:dateTime" minOccurs="0"/>
+    </xsd:sequence>
+  </xsd:complexType>
+
+  <xsd:element name="Severity" type="tns:Severity"/>
+  <xsd:simpleType name="Severity">
+    <xsd:restriction base="xsd:NMTOKEN">
+      <xsd:enumeration value="WARNING"/>
+      <xsd:enumeration value="RECOVERABLE"/>
+      <xsd:enumeration value="FATAL"/>
+    </xsd:restriction>
+  </xsd:simpleType>
+
+</xsd:schema>

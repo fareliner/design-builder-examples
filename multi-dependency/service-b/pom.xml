@@ -26,15 +26,11 @@
     <version>1.0.0</version>
     <relativePath>../parent-wsdl/pom.xml</relativePath>
   </parent>
-  <artifactId>design-builder-example-multi-dependency-one-service-a</artifactId>
-  <name>Examples :: Multi Dependency :: One Service A</name>
+  <artifactId>design-builder-example-multi-dependency-one-service-b</artifactId>
+  <name>Examples :: Multi Dependency :: One Service B</name>
   <packaging>jar</packaging>
 
   <dependencies>
-    <dependency>
-      <groupId>${project.groupId}</groupId>
-      <artifactId>design-builder-example-multi-dependency-utility</artifactId>
-    </dependency>
     <dependency>
       <groupId>${project.groupId}</groupId>
       <artifactId>design-builder-example-multi-dependency-one-messages</artifactId>
@@ -127,12 +123,11 @@
                   <wsdlOption>
                     <bindingFiles>
                       <bindingFile>classpath:META-INF/common.episode</bindingFile>
-                      <bindingFile>classpath:META-INF/utility.episode</bindingFile>
                       <bindingFile>classpath:META-INF/one.episode</bindingFile>
                       <bindingFile>${project.basedir}/src/main/resources/global.xjb</bindingFile>
-                      <bindingFile>${project.basedir}/src/main/resources/service/ServiceA.xjws</bindingFile>
+                      <bindingFile>${project.basedir}/src/main/resources/service/ServiceB.xjws</bindingFile>
                     </bindingFiles>
-                    <wsdl>classpath:META-INF/${service.name}/${service.release.version}/ServiceA.wsdl</wsdl>
+                    <wsdl>classpath:META-INF/${service.name}/${service.release.version}/ServiceB.wsdl</wsdl>
                   </wsdlOption>
                 </wsdlOptions>
               </configuration>

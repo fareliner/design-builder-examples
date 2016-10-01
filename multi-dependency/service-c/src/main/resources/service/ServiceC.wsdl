@@ -41,7 +41,33 @@
       </xsd:element>
     </xsd:schema>
     <xsd:schema targetNamespace="urn:io.fares.model.example.utility" xmlns="urn:io.fares.model.example.utility">
-      <xsd:include schemaLocation="utility/Fault.xsd"/>
+      <xsd:element name="Fault" type="u:Fault"/>
+      <xsd:complexType name="Fault">
+        <xsd:sequence>
+          <xsd:element name="Code">
+            <xsd:simpleType>
+              <xsd:annotation>
+                <xsd:documentation>Fault code, example REV-0302</xsd:documentation>
+              </xsd:annotation>
+              <xsd:restriction base="xsd:string">
+                <xsd:pattern value="[A-Z]{3}\-[0-9]{4}"/>
+              </xsd:restriction>
+            </xsd:simpleType>
+          </xsd:element>
+          <xsd:element ref="u:Severity" minOccurs="0"/>
+          <xsd:element name="Description" type="xsd:string"/>
+          <xsd:element name="FaultInstanceID" type="xsd:string" minOccurs="0"/>
+          <xsd:element name="DateTimeStamp" type="xsd:dateTime" minOccurs="0"/>
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:element name="Severity" type="u:Severity"/>
+      <xsd:simpleType name="Severity">
+        <xsd:restriction base="xsd:NMTOKEN">
+          <xsd:enumeration value="WARNING"/>
+          <xsd:enumeration value="RECOVERABLE"/>
+          <xsd:enumeration value="FATAL"/>
+        </xsd:restriction>
+      </xsd:simpleType>
     </xsd:schema>
   </wsdl:types>
 
@@ -55,14 +81,14 @@
   </wsdl:message>
 
   <wsdl:message name="GetCustomerException">
-    <wsdl:part name="err" element="u:Fault"/>
+    <wsdl:part name="io.fares.examples.utility.Fault" element="u:Fault"/>
   </wsdl:message>
 
   <wsdl:portType name="CustomerPort">
     <wsdl:operation name="getById">
       <wsdl:input name="in" message="os:getCustomerByIdRQ"/>
       <wsdl:output name="out" message="os:getCustomerByIdRS"/>
-      <wsdl:fault name="err" message="os:GetCustomerException"/>
+      <wsdl:fault name="gce" message="os:GetCustomerException"/>
     </wsdl:operation>
   </wsdl:portType>
 
@@ -77,8 +103,8 @@
       <wsdl:output name="out">
         <soap:body use="literal"/>
       </wsdl:output>
-      <wsdl:fault name="err">
-        <soap:fault name="err" use="literal"/>
+      <wsdl:fault name="gce">
+        <soap:fault name="fault" use="literal"/>
       </wsdl:fault>
     </wsdl:operation>
   </wsdl:binding>

@@ -27,6 +27,7 @@
 
   <modules>
     <module>multi-dependency</module>
+    <module>xml-object-extending-exception</module>
   </modules>
 
   <profiles>
